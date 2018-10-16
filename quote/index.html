@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Quote Machine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            color: #555;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .quote-box {
+            max-width: 800px;
+            font-size: 1.2em;
+            padding: 1em;
+        }
+
+        #rootNode {
+            background: none;
+            border: none;
+            text-align: inherit;
+        }
+
+        /* #rootNode:hover, #rootNode:focus {
+        border: 1px solid goldenrod;
+        } */
+
+        .quote-author {
+            color: #999;
+        }
+
+        .quote-button {
+            border: 1px solid lightgray;
+            background-color: whitesmoke;
+            border-radius: 5px;
+            padding: 0.5rem;
+            min-width: 8rem;
+        }
+
+        .quote-button:hover {
+            /*   font-weight: bold; */
+            border-color: goldenrod;
+        }
+    </style>
+       <script>
+        const qURL = 'https://talaikis.com/api/quotes/random/'
+        var rootNode
+        window.onload = () => {
+            rootNode = document.getElementById('rootNode')
+            getQuote() // get a first quote
+        }
+
+        async function getQuote() {
+            quoteObj = await (fetch(qURL).then(r => r.json())) // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+            const html = quoteObjToHtmlString(quoteObj)
+            rootNode.innerHTML = html
+        }
+
+        function quoteObjToHtmlString({author, quote}) {
+            const twUrl = quoteObjToTweetUrl({author, quote})
+            return (
+                `<div class='quote-box'>
+                <p class='quote-text'>${quote}</p>
+                <p class='quote-author'> - ${author}</p>
+                <button class="quote-button" id="button-new" onclick="getQuote()">new quote</button>
+                <a href='${twUrl}' target="_blank"><button class="quote-button" id="button-tweet">tweet</button></a>
+                </div>`
+            )
+        }
+
+        function quoteObjToTweetUrl({author, quote}) {
+            const txt = (`${quote} - ${author}`)
+            const url = encodeURI('//twitter.com/home?status=' + txt)
+            return url
+        }
+    </script>
+</head>
+
+<body>
+    <div id="rootNode">
+        <div class="quote-box">
+            <p class="quote-text">That bedrock faith that I could write was what blinded me to attempts to discourage me.</p>
+            <p class="quote-author"> - Lynn Abbey</p>
+            <button class="quote-button" id="button-new">new quote</button>
+            <a href="//twitter.com/home?status=That%20bedrock%20faith%20that%20I%20could%20write%20was%20what%20blinded%20me%20to%20attempts%20to%20discourage%20me.%20-%20Lynn%20Abbey" target="_blank">
+                <button class="quote-button" id="button-tweet">tweet</button>
+            </a>
+        </div>
+    </div>
+    
+</body>
+
+</html>
