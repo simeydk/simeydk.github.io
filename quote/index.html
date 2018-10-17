@@ -55,16 +55,23 @@
             border-color: goldenrod;
         }
     </style>
+        <script src="js/localQuote.js"></script>
        <script>
         const qURL = 'https://talaikis.com/api/quotes/random/'
         var rootNode
         window.onload = () => {
             rootNode = document.getElementById('rootNode')
-            getQuote() // get a first quote
+            getLocalQuote() // get a first quote
         }
 
         async function getQuote() {
             quoteObj = await (fetch(qURL).then(r => r.json())) // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+            const html = quoteObjToHtmlString(quoteObj)
+            rootNode.innerHTML = html
+        }
+
+        function getLocalQuote() {
+            quoteObj = localQuote()
             const html = quoteObjToHtmlString(quoteObj)
             rootNode.innerHTML = html
         }
