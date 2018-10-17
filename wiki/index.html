@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>wiki viewer</title>
-  
-  
-  
-      <link rel="stylesheet" href="css/style.css">
 
-  
+
+
+  <link rel="stylesheet" href="css/style.css">
+
+
 </head>
 
 <body>
 
-  
-<div id="app">
-  <form id="search-form">
-    <input id="search-box" type="text" placeholder="Search Wikipedia"/>
-    <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
-  </form><a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" id="random">show me a random article instead</a>
-  <ul class="results" id="results"></ul>
-</div>
+
+  <div id="app">
+    <form id="search-form">
+      <input id="search-box" type="text" placeholder="Search Wikipedia" />
+      <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+    </form>
+    <a href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" id="random">
+        show me a random article instead
+    </a>
+    <ul class="results" id="results"></ul>
+  </div>
   <script src='https://unpkg.com/lodash'></script>
-<script src='https://simeydk.github.io/cachedFetch/cachedFetch.js'></script>
-<script src='https://unpkg.com/js-sha1@0.6.0/build/sha1.min.js'></script>
+  <script src='../js/cachedFetch.js'></script>
+  <script src='https://unpkg.com/js-sha1@0.6.0/build/sha1.min.js'></script>
 
-  
 
-    <script  src="js/index.js"></script>
+
+  <script src="js/index.js"></script>
 
 
 
