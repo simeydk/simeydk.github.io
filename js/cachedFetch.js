@@ -1,19 +1,16 @@
-function cachedFetch(url, options, expiryMin = 5) {
+function cachedFetch(url, options, expiryMin = 5,  keyFunction = (x => x)) {
   const storage = localStorage;
-  const key = "fetch_" + url;
+  const key = "fetch_" + keyFunction(url);
   const expiryMS = expiryMin * 60 * 1000;
   const cacheRaw = storage.getItem(key);
   const cacheObj = cacheRaw ? JSON.parse(cacheRaw) : null;
   const cacheValid = cacheObj ? (Date.now() < cacheObj.createdTime + expiryMS) : false
  
-  if (cacheValid) {
-       
+  if (cacheValid) { // Use the cache if it's valid
     const blob = new Blob([cacheObj.content]);
     const response = new Response(blob);
-    return Promise.resolve(response);
-   
+    return Promise.resolve(response);l
   } else {
-
     return fetch(url, options).then(response => {
       response
         .clone().text().then(content => {
