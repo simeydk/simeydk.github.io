@@ -1,9 +1,11 @@
 // https://simeydk.github.io/cachedFetch/cachedFetch.js
 
+const f = cachedFetch || fetch
+
 function fetchWiki(term) {
   const wUrl = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&origin=*&gsrlimit=10&prop=pageimages|extracts&explaintext&exintro&exsentences=2&exlimit=max&gsrsearch='
   const searchUrl = wUrl + term
-  return cachedFetch(searchUrl) // get response
+  return f(searchUrl) // get response
     .then(result => result.json()) // convert to JSON
     .then(x => x.query.pages) // extract pages object
     .then(Object.values) // convert object to array
