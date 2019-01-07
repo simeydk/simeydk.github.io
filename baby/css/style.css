@@ -6,12 +6,12 @@
 
 body {
   background: lightblue;
-  font-family: 'Open Sans','Sans Serif';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 90vh;
+  /* min-height: 90vh; */
 }
 
 #page {
@@ -24,6 +24,7 @@ body {
   max-width: 800px;
   align-self: center;
   padding: 2rem;
+  margin: 2rem;
 }
 
 .weeks_and_days {
