@@ -46,7 +46,7 @@ function dateDiffMonthsAndDays(start,end) {
     const startPlusMonths = startOfDay(addMonths(start,months))
     const days = Math.floor((end - startPlusMonths) / oneDay)
 
-    return {months,days, startPlusMonths}
+    return {months,days}
 
 }
 

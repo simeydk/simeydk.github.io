@@ -17,6 +17,9 @@ function renderHTML() {
   const toNow = dateDiffWeeksAndDays(start,today)
   const toEnd = dateDiffWeeksAndDays(end)
 
+  const toNowMonths = dateDiffMonthsAndDays(start,today)
+  const toEndMonths = dateDiffMonthsAndDays(today,end)
+  
   document.title = `${toNow.weeks}w${toNow.days}d (${toEnd.diffDays}d left)`
 
   return `
@@ -32,8 +35,13 @@ function renderHTML() {
         <span class="atom symbol day_symbol">d</span>
       </p>
     </div>
+    <p class="days_left">(${toNowMonths.months} months and ${toNowMonths.days} days)</p>
     <img id="dummy" class="dummy" src="pacifier.svg"></img>
-    <p class="days_left"> <span class="days">${toEnd.diffDays}</span> days until 13 May 2019</p>
+    <p class="days_left"> 
+      <span class="days">${toEnd.diffDays}</span> days until 13 May 2019 
+      <br/>
+      (${toEndMonths.months} months and ${toEndMonths.days} days)
+    </p>
   </main>`
 }
 

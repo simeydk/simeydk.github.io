@@ -57,6 +57,7 @@ body {
   align-content: center; 
   color: white;
   margin: 1rem;
+  text-align: center;
 }
 
 .days_left .days {
