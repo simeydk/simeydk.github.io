@@ -20,7 +20,7 @@ function renderHTML() {
   const toNowMonths = dateDiffMonthsAndDays(start,today)
   const toEndMonths = dateDiffMonthsAndDays(today,end)
   
-  document.title = `${toNow.weeks}w${toNow.days}d (${toEnd.diffDays}d left)`
+  document.title = `${toNow.weeks}w${toNow.days}d / ${toEnd.diffDays}d left / ${dateToShortDayMonth(now)}`
 
   return `
   <main id="page">
@@ -52,3 +52,6 @@ function toggleClassForId(id,className) {
   document.getElementById(id).classList.toggle(className)
 }
 
+function dateToShortDayMonth(d) {
+  return `${d.getDate()} ${d.toString().slice(4,7)}`
+}
