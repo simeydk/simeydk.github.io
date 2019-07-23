@@ -10,7 +10,7 @@ body.innerHTML = renderHTML() //`<pre>${JSON.stringify({toNow,toEnd},null,'\t')}
 function renderHTML() {
 
   const start = new Date(2018,7,6)
-  const end = new Date(2019,4,13)
+  const end = new Date(2019,3,19)
   const now = new Date()
   const today = startOfDay()
 
