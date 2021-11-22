@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Size</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        body {
+            padding: 0.5rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #555
+        }
+        span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Viewport Size</h1>
+    <p>
+        <span id="width"></span>
+         × 
+        <span id="height"></span>
+    </p>
+    <script>
+        window.onload = function() {
+            var viewportWidth = window.innerWidth;
+            var viewportHeight = window.innerHeight;
+            document.getElementById('width').innerHTML = viewportWidth;
+            document.getElementById('height').innerHTML = viewportHeight;
+        }
+    </script>
+</body>
+</html>
